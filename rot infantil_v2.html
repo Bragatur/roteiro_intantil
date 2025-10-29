@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roteiro Infantojuvenil “A Cidade do Bracvs”</title>
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"></noscript>
+
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Segoe UI", sans-serif;
+      background: url('https://raw.githubusercontent.com/Bragatur/roteiro_intantil/refs/heads/main/rot%20infatil%20mockup%20(1).jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    main {
+      max-width: 500px;
+      width: 100%;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 2em;
+      line-height: 1.2;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    p {
+      margin: 0 0 30px 0;
+      font-size: 1.1em;
+      line-height: 1.4;
+      max-width: 100%;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    }
+
+    .link-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      width: 100%;
+      max-width: 300px;
+      border: none;
+      border-radius: 30px;
+      background-color: #2575fc;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+
+    .link-button:hover,
+    .link-button:focus {
+      background-color: #1a5bbf;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      outline: none;
+    }
+
+    .footer {
+      font-size: 0.9em;
+      color: #ccc;
+      user-select: none;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ESTILOS DO MENU FLUTUANTE (Botão e Opções) */
+    .floating-menu-dropdown {
+      position: fixed;
+      top: 20px; 
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; /* Alinhar tudo à direita */
+      opacity: 0;
+      transform: translateY(-20px); /* Ajustar a animação para vir de cima */
+      animation: floatIn 0.8s ease forwards 1.2s;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .menu-main {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; 
+    }
+
+    #menu-toggler {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: #f7a01d; 
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    #menu-toggler:hover {
+      transform: scale(1.1);
+      background-color: #e6911c;
+    }
+
+    .menu-options {
+      display: none;
+      align-items: flex-end; /* Garantir alinhamento à direita para aparecer debaixo do botão */
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .menu-options.show {
+      display: flex;
+      animation: fadeSlide 0.4s ease forwards;
+    }
+
+    .menu-option-link {
+      display: flex;
+      align-items: center;
+      /* Alterado para alinhar o conteúdo à direita, pois o ícone está no final */
+      justify-content: flex-end; 
+      padding: 10px;
+      width: fit-content; /* Ajusta a largura ao conteúdo */
+      border-radius: 10px;
+      background-color: #555;
+      color: #fff;
+      font-size: 0.8rem;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(-10px); 
+      animation: optionPop 0.35s ease forwards;
+      transition: background-color 0.3s;
+      margin-left: auto; /* Empurra o link para a direita dentro do seu contentor */
+    }
+    
+    .menu-options.show .menu-option-link:nth-last-child(n) {
+        animation-delay: calc(0.05s * var(--i));
+    }
+
+
+    .menu-option-link:hover {
+        background-color: #333;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes optionPop {
+      0% { opacity: 0; transform: translateY(-10px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    /* Estilo para o ícone (agora ele está sempre depois do texto) */
+    .menu-option-link i {
+        margin-left: 8px; /* Adiciona espaço à esquerda do ícone */
+        /* Removido: margin-right: 8px; */
+    }
+
+  </style>
+</head>
+<body lang="pt">
+  <div class="overlay">
+    <main>
+      <h1 id="title">Roteiro Infantojuvenil “A Cidade do Bracvs”</h1>
+      <p id="description">Descarregue o roteiro em português:</p>
+      
+      <a id="download-button" class="link-button" 
+         href="https://visitbraga.travel/wp-content/uploads/2025/07/Roteiro-Infantil-CMB-Visit-Braga.pdf" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="lni lni-download"></i> Descarregar Roteiro
+      </a>
+      
+      <div class="footer">© Município de Braga</div>
+    </main>
+  </div>
+
+  <div class="floating-menu-dropdown">
+    <div class="menu-main">
+      <div id="menu-toggler">
+          <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+    <div class="menu-options" id="menu-options">
+      </div>
+  </div>
+
+  <script>
+    // Lista de links de navegação para o menu
+    const menuLinks = [
+      { url: "https://bragatur.github.io/mapas/", name: "Mapa Turístico de Braga", icon: "fa-solid fa-map" },
+      { url: "https://bragatur.github.io/roteiros/", name: "Descobrir Braga em 3 Dias", icon: "fa-solid fa-route" },
+      { url: "https://bragatur.github.io/roteiro_barroco_braga/", name: "Roteiro do Barroco", icon: "fa-solid fa-landmark" },
+      { url: "https://visitbraga.travel/wp-content/uploads/2025/06/Roteiro-Braga-After-Dark.pdf", name: "Braga After Dark", icon: "fa-solid fa-moon" },
+    ];
+
+    const menuOptions = document.getElementById('menu-options');
+    const menuToggler = document.getElementById('menu-toggler');
+
+    // Função para renderizar os links
+    function renderMenu() {
+      menuOptions.innerHTML = '';
+      let i = menuLinks.length; // Contagem regressiva para animação de cima para baixo
+      
+      // Itera em ordem inversa para que o primeiro item do array (Topo) apareça no topo da lista
+      [...menuLinks].reverse().forEach(link => { 
+        const a = document.createElement('a');
+        a.className = 'menu-option-link';
+        a.href = link.url;
+        a.target = "_blank"; // Abre num novo separador
+        
+        // **[Alteração]** O ícone foi movido para depois do texto
+        a.innerHTML = `${link.name} <i class="${link.icon}"></i>`;
+        
+        a.style.setProperty('--i', i--);
+        menuOptions.appendChild(a);
+      });
+    }
+
+    // Listener para abrir/fechar o menu
+    menuToggler.addEventListener('click', () => {
+      menuOptions.classList.toggle('show');
+      // Altera o ícone
+      if (menuOptions.classList.contains('show')) {
+         menuToggler.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      } else {
+         menuToggler.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', renderMenu);
+  </script>
+</body>
+</html>
