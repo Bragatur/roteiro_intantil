@@ -99,12 +99,12 @@
       user-select: none;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
-    
+
     /* --- INÍCIO: Estilos do Menu de Navegação (Flutuante Superior Direito) --- */
 
     .floating-menu-dropdown {
       position: fixed;
-      top: 20px; 
+      top: 20px;
       right: 20px;
       z-index: 1001;
       display: flex;
@@ -114,7 +114,7 @@
       transform: translateY(-20px);
       animation: floatInTop 1s ease forwards;
     }
-    
+
     @keyframes floatInTop {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -178,7 +178,7 @@
       transition: background-color 0.3s, transform 0.2s;
       white-space: nowrap; /* Manter links numa só linha */
     }
-    
+
     .menu-options.show .menu-option-link:nth-child(n) {
       animation-delay: calc(0.05s * var(--i));
     }
@@ -187,7 +187,7 @@
       background-color: rgba(0, 0, 0, 0.8);
       transform: scale(1.05);
     }
-    
+
     @keyframes fadeSlideDown {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -197,12 +197,12 @@
       0% { opacity: 0; transform: translateY(-10px) scale(0.8); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-    
+
     /* --- FIM: Estilos do Menu de Navegação --- */
 
 
     /* --- INÍCIO: Estilos do Menu de Idiomas (Flutuante Inferior Direito) --- */
-    
+
     .lang-dropdown {
       position: fixed;
       bottom: 20px;
@@ -297,9 +297,9 @@
     .lang-options.show .lang-icon:nth-child(n) {
       animation-delay: calc(0.05s * var(--i));
     }
-    
+
     /* --- FIM: Estilos do Menu de Idiomas --- */
-    
+
   </style>
 </head>
 <body lang="pt">
@@ -307,13 +307,13 @@
     <main>
       <h1 id="title">Roteiro Infantojuvenil “A Cidade do Bracvs”</h1>
       <p id="description">Descarregue o roteiro em português:</p>
-      
-      <a id="download-button" class="link-button" 
-         href="https://visitbraga.travel/wp-content/uploads/2025/07/Roteiro-Infantil-CMB-Visit-Braga.pdf" 
+
+      <a id="download-button" class="link-button"
+         href="https://visitbraga.travel/wp-content/uploads/2025/07/Roteiro-Infantil-CMB-Visit-Braga.pdf"
          rel="noopener noreferrer" target="_blank">
         <i class="lni lni-download"></i> Descarregar Roteiro
       </a>
-      
+
       <div class="footer">© Município de Braga</div>
     </main>
   </div>
@@ -326,7 +326,7 @@
     </div>
     <div class="menu-options" id="menu-options"></div>
   </div>
-  
+
   <div class="lang-dropdown">
     <div class="lang-main">
       <div id="current-lang" class="lang-icon">PT</div>
@@ -407,9 +407,9 @@
       { id: "menuLink3", url: "https://bragatur.github.io/roteiro_barroco_braga/" },
       { id: "menuLink4", url: "https://bragatur.github.io/bragaafterdark/" }
     ];
-    
+
     // Links para a página principal dos roteiros
-    const mainRoutesLinkData = { id: "menuLink5", url: "https://bragatur.github.io/roteiros/" }; 
+    const mainRoutesLinkData = { id: "menuLink5", url: "https://bragatur.github.io/roteiros/" };
 
 
     // Ícones do Menu
@@ -425,11 +425,11 @@
     const currentLang = document.getElementById('current-lang');
     const options = document.getElementById('lang-options');
     const langLabel = document.getElementById('lang-label');
-    const downloadButton = document.getElementById("download-button"); 
+    const downloadButton = document.getElementById("download-button");
     const menuToggler = document.getElementById('menu-toggler');
     const menuOptions = document.getElementById('menu-options');
-    
-    
+
+
     // Função para renderizar as opções do menu de navegação
     function renderMenu(lang) {
         const t = texts[lang] || texts["en"];
@@ -444,9 +444,9 @@
             a.href = linkData.url;
             // O linkName é obtido através do ID no objeto 'texts'
             const linkName = t.menu[linkData.id];
-            const iconClass = menuIcons[linkName] || 'fa-solid fa-circle-info'; 
-            a.innerHTML = `${linkName} <i class="${iconClass}"></i>`; 
-            a.target = "_self"; 
+            const iconClass = menuIcons[linkName] || 'fa-solid fa-circle-info';
+            a.innerHTML = `${linkName} <i class="${iconClass}"></i>`;
+            a.target = "_self";
             a.style.setProperty('--i', i++);
             menuOptions.appendChild(a);
         });
@@ -485,16 +485,16 @@
     function setLanguage(lang) {
       // Usa o 'en' como fallback
       const content = texts[lang] || texts['en'];
-      const routeUrl = routeUrls[lang] || routeUrls['en']; 
+      const routeUrl = routeUrls[lang] || routeUrls['en'];
 
       document.getElementById("title").textContent = content.title;
       document.getElementById("description").textContent = content.description;
       document.documentElement.lang = lang;
       document.title = content.title;
-      
+
       downloadButton.innerHTML = `<i class="lni lni-download"></i> ${content.button}`;
       downloadButton.href = routeUrl;
-      
+
       langLabel.textContent = content.langLabel;
       currentLang.textContent = flagMap[lang];
       renderDropdown(lang);
@@ -510,18 +510,18 @@
 
       // Obtém a lista de idiomas preferidos do navegador
       const preferredLangs = navigator.languages || (navigator.language ? [navigator.language] : []);
-      
+
       // Percorre os idiomas preferidos e usa o primeiro que for suportado.
       for (let i = 0; i < preferredLangs.length; i++) {
           // Extrai o código base (ex: 'pt' de 'pt-PT')
           const baseLangCode = preferredLangs[i].slice(0, 2).toLowerCase();
-          
+
           if (supportedLangs.includes(baseLangCode)) {
               finalLang = baseLangCode; // Encontrou um idioma suportado
               break; // Para de procurar
           }
       }
-      
+
       setLanguage(finalLang);
     });
   </script>
