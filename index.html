@@ -355,8 +355,7 @@
           menuLink1: "Mapa Turístico de Braga",
           menuLink2: "Descobrir Braga em 3 Dias",
           menuLink3: "Roteiro do Barroco",
-          menuLink4: "Braga After Dark",
-          menuLink5: "Página Principal de Roteiros"
+          menuLink4: "Braga After Dark"
         }
       },
       en: {
@@ -368,8 +367,7 @@
           menuLink1: "Tourist Map of Braga",
           menuLink2: "Discover Braga in 3 Days",
           menuLink3: "Baroque Route",
-          menuLink4: "Braga After Dark",
-          menuLink5: "Main Routes Page"
+          menuLink4: "Braga After Dark"
         }
       },
       es: {
@@ -381,8 +379,7 @@
           menuLink1: "Mapa Turístico de Braga",
           menuLink2: "Descubrir Braga en 3 Días",
           menuLink3: "Ruta del Barroco",
-          menuLink4: "Braga After Dark",
-          menuLink5: "Página Principal de Rutas"
+          menuLink4: "Braga After Dark"
         }
       },
       fr: {
@@ -394,8 +391,7 @@
           menuLink1: "Carte Touristique de Braga",
           menuLink2: "Découvrir Braga en 3 Jours",
           menuLink3: "Itinéraire Baroque",
-          menuLink4: "Braga After Dark",
-          menuLink5: "Page Principale Itinéraires"
+          menuLink4: "Braga After Dark"
         }
       }
     };
@@ -408,17 +404,12 @@
       { id: "menuLink4", url: "https://bragatur.github.io/bragaafterdark/" }
     ];
 
-    // Links para a página principal dos roteiros
-    const mainRoutesLinkData = { id: "menuLink5", url: "https://bragatur.github.io/roteiros/" };
-
-
     // Ícones do Menu
     const menuIcons = {
         "Mapa Turístico de Braga": "fa-solid fa-map", "Tourist Map of Braga": "fa-solid fa-map", "Mapa Turístico de Braga": "fa-solid fa-map", "Carte Touristique de Braga": "fa-solid fa-map",
         "Descobrir Braga em 3 Dias": "fa-solid fa-route", "Discover Braga in 3 Days": "fa-solid fa-route", "Descubrir Braga en 3 Días": "fa-solid fa-route", "Découvrir Braga en 3 Jours": "fa-solid fa-route",
         "Roteiro do Barroco": "fa-solid fa-landmark", "Baroque Route": "fa-solid fa-landmark", "Ruta del Barroco": "fa-solid fa-landmark", "Itinéraire Baroque": "fa-solid fa-landmark",
-        "Braga After Dark": "fa-solid fa-moon",
-        "Página Principal de Roteiros": "fa-solid fa-list", "Main Routes Page": "fa-solid fa-list", "Página Principal de Rutas": "fa-solid fa-list", "Page Principale Itinéraires": "fa-solid fa-list"
+        "Braga After Dark": "fa-solid fa-moon"
     };
 
     const flagMap = { pt: 'PT', es: 'ES', en: 'EN', fr: 'FR' };
@@ -436,7 +427,7 @@
         menuOptions.innerHTML = '';
         let i = 1;
         // Combina o link principal com os outros links, mantendo a ordem inversa (de baixo para cima na visualização)
-        const linkDatas = [...menuLinksData, mainRoutesLinkData].reverse();
+        const linkDatas = [...menuLinksData].reverse();
 
         linkDatas.forEach((linkData) => {
             const a = document.createElement('a');
