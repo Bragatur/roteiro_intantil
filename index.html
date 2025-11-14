@@ -221,20 +221,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .lang-label {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 6px 12px;
-      border-radius: 12px;
-      margin-top: 8px;
-      letter-spacing: 0.5px;
-      user-select: none;
-      text-align: center;
-      transition: opacity 0.3s;
-      white-space: nowrap;
-    }
-
     .lang-main {
       display: flex;
       flex-direction: column;
@@ -332,7 +318,6 @@
       <div id="current-lang" class="lang-icon">PT</div>
     </div>
     <div class="lang-options" id="lang-options"></div>
-    <span class="lang-label" id="lang-label">Alterar idioma</span>
   </div>
 
   <script>
@@ -350,7 +335,6 @@
         title: "Roteiro Infantojuvenil “A Cidade do Bracvs”",
         description: "Descarregue o roteiro em Português:",
         button: "Descarregar Roteiro",
-        langLabel: "Alterar idioma",
         menu: {
           menuLink1: "Mapa Turístico de Braga",
           menuLink2: "Descobrir Braga em 3 Dias",
@@ -363,7 +347,6 @@
         title: "Children's Route “The City of Bracvs”",
         description: "Download the route in Portuguese:",
         button: "Download Route",
-        langLabel: "Change language",
         menu: {
           menuLink1: "Tourist Map of Braga",
           menuLink2: "Discover Braga in 3 Days",
@@ -376,7 +359,6 @@
         title: "Ruta Infantil “La Ciudad de Bracvs”",
         description: "Descarga la ruta en Portugués:",
         button: "Descargar Ruta",
-        langLabel: "Cambiar idioma",
         menu: {
           menuLink1: "Mapa Turístico de Braga",
           menuLink2: "Descubrir Braga en 3 Días",
@@ -389,7 +371,6 @@
         title: "Itinéraire pour Enfants “La Ville de Bracvs”",
         description: "Téléchargez l'itinéraire en Portugais :",
         button: "Télécharger Itinéraire",
-        langLabel: "Changer de langue",
         menu: {
           menuLink1: "Carte Touristique de Braga",
           menuLink2: "Découvrir Braga en 3 Jours",
@@ -421,7 +402,6 @@
     const flagMap = { pt: 'PT', es: 'ES', en: 'EN', fr: 'FR' };
     const currentLang = document.getElementById('current-lang');
     const options = document.getElementById('lang-options');
-    const langLabel = document.getElementById('lang-label');
     const downloadButton = document.getElementById("download-button");
     const menuToggler = document.getElementById('menu-toggler');
     const menuOptions = document.getElementById('menu-options');
@@ -492,7 +472,6 @@
       downloadButton.innerHTML = `<i class="lni lni-download"></i> ${content.button}`;
       downloadButton.href = routeUrl;
 
-      langLabel.textContent = content.langLabel;
       currentLang.textContent = flagMap[lang];
       renderDropdown(lang);
       options.classList.remove('show');
